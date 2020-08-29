@@ -35,13 +35,16 @@ class DoughnutChart extends Component {
       datasets: [
         {
           data: values,
-          backgroundColor: ["#B22222", "#36A2EB", "#FFCE56"],
+          backgroundColor: ["#de1738", "#36A2EB", "#FFCE56"],
           hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
         },
       ],
     };
     return (
       <div>
+        <header>
+          <p>Number of articles per topic:</p>
+        </header>
         <Doughnut data={data} height={100} />
       </div>
     );

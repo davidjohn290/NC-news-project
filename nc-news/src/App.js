@@ -4,11 +4,16 @@ import "./App.css";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
 import Homepage from "./components/Homepage";
+import DoughnutChart from "./components/DoughnutChart";
+import ToggleView from "./components/ToggleView";
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <ToggleView>
+        <DoughnutChart />
+      </ToggleView>
       <Router className="router">
         <Homepage path="/" />
         <Articles path="/articles" />

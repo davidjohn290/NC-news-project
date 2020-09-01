@@ -71,4 +71,79 @@ nav {
   font-size: 16px;
   margin-bottom: 20px;
   margin-top: 20px;
+  margin-left: 15px;
+}
+
+.homeButton {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  background-color: rgb(253, 204, 113);
+  border: black 2px solid;
+  border-radius: 8px;
+  color: rgb(7, 7, 7);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 3px;
+}
+
+.inputBox {
+  padding: 15px 32px;
+  border: black 1px solid;
+  margin: 0.5cm;
+  border-radius: 8px;
+}
+
+.form {
+  border: black 2px solid;
+}
+
+.singleArticleCard {
+  font-size: 0.5cm;
+  border: rgb(17, 17, 17) 1px solid;
+  width: auto;
+  height: auto;
+  background-color: rgb(255, 198, 93);
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  margin: auto;
+  text-align: left;
+}
+
+.commentCard {
+  border: rgb(17, 17, 17) 1px solid;
+  width: 8cm;
+  height: 11cm;
+  background-color: rgb(205, 205, 205);
+  align-self: auto;
+  flex: 0 30%;
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+}
+
+.sortButton {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  background-color: rgb(253, 204, 113);
+  border: black 1px solid;
+  border-radius: 8px;
+  color: rgb(7, 7, 7);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+h3 {
+  font-weight: bolder;
+  color: black;
 }

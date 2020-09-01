@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utilis/api";
 import ArticleCards from "./ArticleCards";
+import Loader from "./Loader";
 
 class Articles extends Component {
   state = {
@@ -32,7 +33,7 @@ class Articles extends Component {
 
   render() {
     const { isLoading, articles } = this.state;
-    if (isLoading) return <p>Articles loading...</p>;
+    if (isLoading) return <Loader />;
     return (
       <>
         <header>
@@ -41,30 +42,16 @@ class Articles extends Component {
             <button
               onClick={this.handleSortByButton}
               value="comments"
-              className="button"
+              className="sortButton"
             >
               Comments
             </button>
             <button
               onClick={this.handleSortByButton}
               value="votes"
-              className="button"
+              className="sortButton"
             >
               Votes
-            </button>
-            <button
-              onClick={this.handleSortByButton}
-              value="article_id"
-              className="button"
-            >
-              Article Id
-            </button>
-            <button
-              onClick={this.handleSortByButton}
-              value="date"
-              className="button"
-            >
-              Date published
             </button>
           </label>
         </header>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../utilis/api";
+import Loader from "./Loader";
 
 class Nav extends Component {
   state = {
@@ -16,9 +17,20 @@ class Nav extends Component {
 
   render() {
     const { isLoading, topics } = this.state;
-    if (isLoading) return <p>Nav bar is loading...</p>;
+    if (isLoading) return <Loader />;
     return (
       <nav>
+        <Link to="/">
+          <button className="homeButton">Home</button>
+        </Link>
+
+        <Link to="/articles">
+          <button className="homeButton">All Articles</button>
+        </Link>
+        <Link to="/article/:id">
+          <button className="homeButton">Find Article</button>
+        </Link>
+
         <br />
         <label>
           Pick your topic of choice:

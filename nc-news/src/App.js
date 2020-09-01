@@ -6,6 +6,7 @@ import Articles from "./components/Articles";
 import Homepage from "./components/Homepage";
 import DoughnutChart from "./components/DoughnutChart";
 import ToggleView from "./components/ToggleView";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Homepage path="/" />
         <Articles path="/articles" />
         <Articles path="/articles/:topic" />
+        <SingleArticle path="/articles/article/:id" />
+        <SingleArticle path="/article/:id" />
       </Router>
     </div>
   );

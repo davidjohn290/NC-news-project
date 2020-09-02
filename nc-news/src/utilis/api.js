@@ -14,7 +14,6 @@ export const getAllArticles = (topic, sort_by) => {
   return axiosInstance
     .get("/articles", { params: { topic, sort_by } })
     .then(({ data: { articles } }) => {
-      console.log(articles);
       if (sort_by && topic) {
         const filteredByTopic = articles.filter(
           (article) => article.topic === topic
@@ -44,5 +43,27 @@ export const getCommentsById = (id) => {
         return comment;
       });
       return formattedComments;
+    });
+};
+
+export const addVotes = (comment_id, type) => {
+  return axiosInstance
+    .patch(`/comments/${comment_id}`, { inc_votes: type })
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
+
+export const addComment = (id, author, comment) => {
+  return axiosInstance
+    .post("/articles/33/comments", {
+      body: comment,
+      username: author,
+      article_id: id,
+    })
+    .then(({ data: { postedComment } }) => {
+      const formattedDate = formatDate(postedComment.created_at);
+      postedComment.created_at = formattedDate;
+      return postedComment;
     });
 };

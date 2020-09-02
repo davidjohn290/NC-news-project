@@ -37,11 +37,11 @@ class Articles extends Component {
     return (
       <>
         <header>
-          <label>
+          <label className="sortby">
             Sort by:
             <button
               onClick={this.handleSortByButton}
-              value="comments"
+              value="comment_count"
               className="sortButton"
             >
               Comments

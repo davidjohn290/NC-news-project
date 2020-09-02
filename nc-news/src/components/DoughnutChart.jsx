@@ -45,7 +45,7 @@ class DoughnutChart extends Component {
         <header>
           <p>Number of articles per topic:</p>
         </header>
-        <Doughnut data={data} height={100} />
+        <Doughnut data={data} height={50} />
       </div>
     );
   }

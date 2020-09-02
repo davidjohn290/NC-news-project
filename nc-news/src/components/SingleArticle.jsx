@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import * as api from "../utilis/api";
 import ListOfComments from "./ListOfComments";
 import SearchBar from "./SearchBar";
+import AddComment from "./AddComment";
 
 class SingleArticle extends Component {
   state = {
@@ -10,6 +11,7 @@ class SingleArticle extends Component {
     article: {},
     articleId: 0,
     wrongInput: false,
+    toggleView: true,
   };
 
   componentDidMount() {
@@ -51,6 +53,7 @@ class SingleArticle extends Component {
 
   render() {
     const { isLoading, wrongInput, articleId } = this.state;
+    const { user } = this.props;
     if (isLoading) {
       return (
         <SearchBar
@@ -61,7 +64,7 @@ class SingleArticle extends Component {
         />
       );
     }
-    const { article } = this.state;
+    const { article, toggleView } = this.state;
     return (
       <>
         <SearchBar
@@ -72,35 +75,55 @@ class SingleArticle extends Component {
         />
 
         <div className="singleArticleCard">
-          <p>
-            <b>Title: </b>
-            {article.title}
-          </p>
+          <h3>{article.title}</h3>
+
+          <br />
           <p>
             <b>Topic:</b> {article.topic}
           </p>
+          <br />
           <p>
             <b>Author:</b> {article.author}
           </p>
+          <br />
           <p>
-            <b>Article Id:</b> {article.article_id}
+            <b>Posted at:</b> {article.created_at}
           </p>
+          <br />
           <p>
-            <b>Created at:</b> {article.created_at}
-          </p>
-          <p>
-            <b>Comments:</b>
+            <b>No of comments:</b>
             {article.comment_count}
           </p>
-          <p>
-            <b>Votes:</b> {article.votes}
-          </p>
-
+          {toggleView ? (
+            <button
+              onClick={() => {
+                this.setState({ toggleView: false });
+              }}
+              className="button"
+            >
+              Add comment
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={() => {
+                  this.setState({ toggleView: true });
+                }}
+                className="button"
+              >
+                close comment form
+              </button>
+              <AddComment id={article.article_id} user={user} />
+            </>
+          )}
           <>
             <header>All comments:</header>
             <br />
-            <ListOfComments id={article.article_id} />
+            <ListOfComments id={article.article_id} user={user} />
           </>
+          <p>
+            <b>Article Id:</b> {article.article_id}
+          </p>
         </div>
       </>
     );

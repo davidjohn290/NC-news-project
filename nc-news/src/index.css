@@ -84,7 +84,7 @@ nav {
   padding: 15px 32px;
   text-align: center;
   text-decoration: underline;
-  display: inline-block;
+  display: inline-flex;
   font-size: 16px;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -125,6 +125,7 @@ nav {
   padding: 30px;
   margin-bottom: 25px;
   border-radius: 8px;
+  overflow: scroll;
 }
 
 .sortButton {
@@ -141,9 +142,55 @@ nav {
   font-size: 16px;
   margin-bottom: 20px;
   margin-top: 20px;
+  width: 4cm;
 }
 
 h3 {
   font-weight: bolder;
   color: black;
+}
+
+.voteButton {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  background-color: rgb(253, 204, 113);
+  border: black 1px solid;
+  border-radius: 8px;
+  color: rgb(7, 7, 7);
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+}
+
+#voted {
+  background-color: rgb(223, 76, 76);
+}
+
+.commentBox {
+  padding: 40px 120px;
+  border: black 1px solid;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.authorBox {
+  padding: 10px 45px;
+  border: black 1px solid;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.loggedIn {
+  border: black 1px solid;
+  border-radius: 8px;
+  background-color: rgb(253, 204, 113);
+  width: 5cm;
+  height: 1cm;
+}
+
+.sortby {
+  float: left;
+  padding-left: 3cm;
 }

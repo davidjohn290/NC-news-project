@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Loader from "./Loader";
 import * as api from "../utilis/api";
+import Voter from "./Voter";
 
 class ListOfComments extends Component {
   state = {
@@ -29,14 +30,12 @@ class ListOfComments extends Component {
               </p>
 
               <p>
-                <b>Comment Id:</b> {comment.comment_id}
-              </p>
-              <p>
                 <b>Created at:</b> {comment.created_at}
               </p>
               <p>
                 <b>Votes:</b> {comment.votes}
               </p>
+              <Voter id={comment.comment_id} votes={comment.votes} />
               <p>
                 <br />
                 <b>Comment:</b> {comment.body}

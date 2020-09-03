@@ -9,7 +9,26 @@ class Voter extends Component {
     beenPressed: false,
   };
 
-  handleUpVote = (event) => {
+  handleResetVote = () => {
+    const { id, type } = this.props;
+    const { addedvote } = this.state;
+    let vote = addedvote;
+    if (vote === -1) {
+      vote = 1;
+    } else {
+      vote = -1;
+    }
+    console.log(addedvote);
+    api.addVotes(type, id, vote);
+    this.setState({
+      addedvote: 0,
+      upvoted: false,
+      downvoted: false,
+      beenPressed: false,
+    });
+  };
+
+  handleUpVote = () => {
     const { id, type } = this.props;
     const { beenPressed } = this.state;
     let increment = 1;
@@ -28,7 +47,7 @@ class Voter extends Component {
     });
   };
 
-  handleDownVote = (event) => {
+  handleDownVote = () => {
     const { id, type } = this.props;
     const { beenPressed } = this.state;
     let decrement = 1;
@@ -72,6 +91,13 @@ class Voter extends Component {
           id={downvoted ? "voted" : null}
         >
           Downvote
+        </button>
+        <button
+          onClick={this.handleResetVote}
+          className="voteButton"
+          disabled={!downvoted && !upvoted}
+        >
+          No vote
         </button>
       </div>
     );

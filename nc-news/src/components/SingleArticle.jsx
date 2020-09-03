@@ -83,13 +83,6 @@ class SingleArticle extends Component {
     } = this.state;
     return (
       <>
-        <SearchBar
-          handleInput={this.handleInput}
-          handleSubmit={this.handleSubmit}
-          wrongInput={wrongInput}
-          articleId={articleId}
-        />
-
         {err ? (
           <ErrorPage
             status={err.response.status}

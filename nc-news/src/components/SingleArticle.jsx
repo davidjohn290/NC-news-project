@@ -113,6 +113,7 @@ class SingleArticle extends Component {
             </p>
 
             <>
+              <br />
               <header>All comments:</header>
               <br />
               <ListOfComments id={article_id} user={user} />

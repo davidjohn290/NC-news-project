@@ -18,7 +18,7 @@ const ArticleCard = ({ article }) => {
       <Link to={`/articles/article/${article_id}`}>
         <h3>{title}</h3>
       </Link>
-
+      <br />
       <p>
         <b>Topic:</b> {topic}
       </p>

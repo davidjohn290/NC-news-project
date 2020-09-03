@@ -8,6 +8,7 @@ const Title = () => {
           Browse through our large selection of articles about various topics!
         </p>
       </header>
+      <br />
     </div>
   );
 };

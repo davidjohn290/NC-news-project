@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: rgb(205, 205, 205);
   font-family: "Courier New", Courier, monospace;
@@ -142,7 +147,7 @@ nav {
   font-size: 16px;
   margin-bottom: 20px;
   margin-top: 20px;
-  width: 4cm;
+  width: 5cm;
 }
 
 h3 {
@@ -192,5 +197,218 @@ h3 {
 
 .sortby {
   float: left;
-  padding-left: 3cm;
+  padding-left: 0.5cm;
+  padding-bottom: 1cm;
+}
+
+.error {
+  color: red;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 1cm;
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: rgb(205, 205, 205);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: lighter sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+  }
+
+  .articleCard {
+    border: rgb(17, 17, 17) 1px solid;
+    width: 7cm;
+    height: 6cm;
+    background-color: rgb(255, 198, 93);
+    align-self: auto;
+    flex: 1;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-evenly;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  header {
+    font-weight: bold;
+    text-align: center;
+    font-size: larger;
+  }
+
+  h1 {
+    text-decoration: underline;
+  }
+
+  h3 {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  nav {
+    text-align: center;
+    padding-bottom: 5px;
+  }
+
+  .button {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
+    background-color: rgb(253, 204, 113);
+    border: black 1px solid;
+    border-radius: 8px;
+    color: rgb(7, 7, 7);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+
+  .homeButton {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
+    background-color: rgb(253, 204, 113);
+    border: black 2px solid;
+    border-radius: 8px;
+    color: rgb(7, 7, 7);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-flex;
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 3px;
+  }
+
+  .inputBox {
+    padding: 15px 32px;
+    border: black 1px solid;
+    margin: 0.5cm;
+    border-radius: 8px;
+  }
+
+  .form {
+    border: black 2px solid;
+  }
+
+  .singleArticleCard {
+    font-size: 0.5cm;
+    border: rgb(17, 17, 17) 1px solid;
+    width: auto;
+    height: auto;
+    background-color: rgb(255, 198, 93);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    margin: auto;
+    text-align: left;
+  }
+
+  .commentCard {
+    border: rgb(17, 17, 17) 1px solid;
+    width: 10cm;
+    height: 8cm;
+    background-color: rgb(205, 205, 205);
+    padding: 10px;
+    flex: auto;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: scroll;
+  }
+
+  .sortButton {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
+    background-color: rgb(253, 204, 113);
+    border: black 1px solid;
+    border-radius: 8px;
+    color: rgb(7, 7, 7);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 2cm;
+  }
+
+  h3 {
+    font-weight: bolder;
+    color: black;
+  }
+
+  .voteButton {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
+    background-color: rgb(253, 204, 113);
+    border: black 1px solid;
+    border-radius: 8px;
+    color: rgb(7, 7, 7);
+    padding: 10px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+  }
+
+  #voted {
+    background-color: rgb(223, 76, 76);
+  }
+
+  .commentBox {
+    padding: 40px 120px;
+    border: black 1px solid;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .authorBox {
+    padding: 10px 45px;
+    border: black 1px solid;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .loggedIn {
+    border: black 1px solid;
+    border-radius: 8px;
+    background-color: rgb(253, 204, 113);
+    width: 4cm;
+    height: 0.8cm;
+    font-size: 13px;
+  }
+
+  .sortby {
+    float: left;
+    font-size: 15px;
+    padding-bottom: 1cm;
+  }
+
+  .error {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 1cm;
+  }
+  #fixedbutton {
+    bottom: auto;
+  }
 }

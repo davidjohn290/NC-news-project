@@ -9,9 +9,11 @@ class AddComment extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { id, user } = this.props;
+    const { id, user, handleNewComment } = this.props;
     const { comment } = this.state;
-    api.addComment(id, user, comment);
+    api.addComment(id, user, comment).then((newComment) => {
+      handleNewComment(newComment);
+    });
   };
 
   handleInput = ({ target: { value, name } }) => {
@@ -19,6 +21,7 @@ class AddComment extends Component {
   };
 
   render() {
+    const { comment } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -31,6 +34,7 @@ class AddComment extends Component {
               cols="30"
               rows="7"
               required
+              value={comment}
             ></textarea>
           </label>
           <br />

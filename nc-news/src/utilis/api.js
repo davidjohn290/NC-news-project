@@ -18,9 +18,23 @@ export const getAllArticles = (topic, sort_by) => {
         const filteredByTopic = articles.filter(
           (article) => article.topic === topic
         );
-        return filteredByTopic;
+        const formattedArticles = filteredByTopic.map((article) => {
+          const formattedArticle = formatDate(article.created_at);
+          const date = formattedArticle.split(" ")[2];
+          const yearAndMonth = date.split("/");
+          article.created_at = [yearAndMonth[0], yearAndMonth[2]];
+          return article;
+        });
+        return formattedArticles;
       } else {
-        return articles;
+        const formattedArticles = articles.map((article) => {
+          const formattedArticle = formatDate(article.created_at);
+          const date = formattedArticle.split(" ")[2];
+          const yearAndMonth = date.split("/");
+          article.created_at = [yearAndMonth[0], yearAndMonth[2]];
+          return article;
+        });
+        return formattedArticles;
       }
     });
 };
@@ -28,7 +42,9 @@ export const getAllArticles = (topic, sort_by) => {
 export const getSingleArticle = (id) => {
   return axiosInstance.get(`/articles/${id}`).then(({ data: { article } }) => {
     const formattedArticle = formatDate(article.created_at);
-    article.created_at = formattedArticle;
+    const date = formattedArticle.split(" ")[2];
+    const yearAndMonth = date.split("/");
+    article.created_at = [yearAndMonth[0], yearAndMonth[2]];
     return article;
   });
 };
@@ -46,9 +62,9 @@ export const getCommentsById = (id) => {
     });
 };
 
-export const addVotes = (comment_id, type) => {
+export const addVotes = (type, id, num) => {
   return axiosInstance
-    .patch(`/comments/${comment_id}`, { inc_votes: type })
+    .patch(`/${type}/${id}`, { inc_votes: num })
     .then(({ data }) => {
       return data.comment;
     });
@@ -56,7 +72,7 @@ export const addVotes = (comment_id, type) => {
 
 export const addComment = (id, author, comment) => {
   return axiosInstance
-    .post("/articles/33/comments", {
+    .post(`/articles/${id}/comments`, {
       body: comment,
       username: author,
       article_id: id,
@@ -66,4 +82,8 @@ export const addComment = (id, author, comment) => {
       postedComment.created_at = formattedDate;
       return postedComment;
     });
+};
+
+export const deleteComment = (commentId) => {
+  return axiosInstance.delete(`/comments/${commentId}`);
 };

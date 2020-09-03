@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-
+import moment from "moment";
 import * as api from "../utilis/api";
 import ListOfComments from "./ListOfComments";
 import SearchBar from "./SearchBar";
-import AddComment from "./AddComment";
+import Voter from "./Voter";
+import ErrorPage from "../components/ErrorPage";
 
 class SingleArticle extends Component {
   state = {
@@ -11,7 +12,7 @@ class SingleArticle extends Component {
     article: {},
     articleId: 0,
     wrongInput: false,
-    toggleView: true,
+    err: null,
   };
 
   componentDidMount() {
@@ -32,14 +33,19 @@ class SingleArticle extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { articleId } = this.state;
-    api.getSingleArticle(articleId).then((article) => {
-      this.setState({
-        article,
-        wrongInput: false,
-        articleId: 0,
-        isLoading: false,
+    api
+      .getSingleArticle(articleId)
+      .then((article) => {
+        this.setState({
+          article,
+          wrongInput: false,
+          articleId: 0,
+          isLoading: false,
+        });
+      })
+      .catch((err) => {
+        this.setState({ err: err, isLoading: false });
       });
-    });
   };
 
   handleInput = ({ target: { value } }) => {
@@ -52,7 +58,7 @@ class SingleArticle extends Component {
   };
 
   render() {
-    const { isLoading, wrongInput, articleId } = this.state;
+    const { isLoading, wrongInput, articleId, err } = this.state;
     const { user } = this.props;
     if (isLoading) {
       return (
@@ -64,7 +70,17 @@ class SingleArticle extends Component {
         />
       );
     }
-    const { article, toggleView } = this.state;
+    const {
+      article: {
+        title,
+        topic,
+        article_id,
+        author,
+        created_at,
+        comment_count,
+        votes,
+      },
+    } = this.state;
     return (
       <>
         <SearchBar
@@ -74,57 +90,45 @@ class SingleArticle extends Component {
           articleId={articleId}
         />
 
-        <div className="singleArticleCard">
-          <h3>{article.title}</h3>
+        {err ? (
+          <ErrorPage
+            status={err.response.status}
+            response={err.response.statusText}
+          />
+        ) : (
+          <div className="singleArticleCard">
+            <h3>{title}</h3>
 
-          <br />
-          <p>
-            <b>Topic:</b> {article.topic}
-          </p>
-          <br />
-          <p>
-            <b>Author:</b> {article.author}
-          </p>
-          <br />
-          <p>
-            <b>Posted at:</b> {article.created_at}
-          </p>
-          <br />
-          <p>
-            <b>No of comments:</b>
-            {article.comment_count}
-          </p>
-          {toggleView ? (
-            <button
-              onClick={() => {
-                this.setState({ toggleView: false });
-              }}
-              className="button"
-            >
-              Add comment
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={() => {
-                  this.setState({ toggleView: true });
-                }}
-                className="button"
-              >
-                close comment form
-              </button>
-              <AddComment id={article.article_id} user={user} />
-            </>
-          )}
-          <>
-            <header>All comments:</header>
             <br />
-            <ListOfComments id={article.article_id} user={user} />
-          </>
-          <p>
-            <b>Article Id:</b> {article.article_id}
-          </p>
-        </div>
+            <p>
+              <b>Topic:</b> {topic}
+            </p>
+            <br />
+            <p>
+              <b>Author:</b> {author}
+            </p>
+            <br />
+            <p>
+              <b>Posted:</b>{" "}
+              {moment([created_at[1], 0, created_at[0]]).fromNow()}
+            </p>
+            <br />
+            <Voter votes={votes} type={"articles"} id={article_id} />
+            <br />
+            <p>
+              <b>No of comments:</b> {comment_count}
+            </p>
+
+            <>
+              <header>All comments:</header>
+              <br />
+              <ListOfComments id={article_id} user={user} />
+            </>
+            <p>
+              <b>Article Id:</b> {article_id}
+            </p>
+          </div>
+        )}
       </>
     );
   }

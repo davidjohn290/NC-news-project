@@ -79,6 +79,7 @@ class SingleArticle extends Component {
         created_at,
         comment_count,
         votes,
+        body,
       },
     } = this.state;
     return (
@@ -113,6 +114,10 @@ class SingleArticle extends Component {
             </p>
 
             <>
+              <br />
+              <p>
+                <b>Article:</b> {body}
+              </p>
               <br />
               <header>All comments:</header>
               <br />

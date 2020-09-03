@@ -81,6 +81,7 @@ class Articles extends Component {
         </header>
         <ul className="articleDiv">
           {articles.map((article, index) => {
+            console.log(article);
             return (
               <li key={article.article_id}>
                 <ArticleCard article={article} index={index} />

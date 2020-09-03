@@ -75,7 +75,7 @@ class Articles extends Component {
               value="created_at"
               onClick={this.handleSortBy}
             >
-              Date posted
+              Posted
             </button>
           </label>
         </header>

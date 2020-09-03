@@ -221,7 +221,7 @@ h3 {
   .articleCard {
     border: rgb(17, 17, 17) 1px solid;
     width: 7cm;
-    height: 6cm;
+    height: 7cm;
     background-color: rgb(255, 198, 93);
     align-self: auto;
     flex: 1;
@@ -291,7 +291,7 @@ h3 {
     text-align: center;
     text-decoration: underline;
     display: inline-flex;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 20px;
     margin-top: 20px;
     margin-left: 3px;
@@ -399,7 +399,7 @@ h3 {
   .sortby {
     float: left;
     font-size: 15px;
-    padding-bottom: 1cm;
+    padding-bottom: 0px;
   }
 
   .error {

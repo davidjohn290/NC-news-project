@@ -221,7 +221,7 @@ h3 {
   .articleCard {
     border: rgb(17, 17, 17) 1px solid;
     width: 7cm;
-    height: 7cm;
+    height: auto;
     background-color: rgb(255, 198, 93);
     align-self: auto;
     flex: 1;

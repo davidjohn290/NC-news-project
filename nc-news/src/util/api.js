@@ -1,5 +1,5 @@
 import axios from "axios";
-const formatDate = require("../utilis/utilisFuncs");
+const formatDate = require("./utilFunction");
 const axiosInstance = axios.create({
   baseURL: "https://getting-nc-news.herokuapp.com/api",
 });
@@ -12,29 +12,15 @@ export const getTopics = () => {
 
 export const getAllArticles = (topic, sort_by) => {
   return axiosInstance
-    .get("/articles", { params: { topic, sort_by } })
+    .get("/articles", { params: { sort_by, topic } })
     .then(({ data: { articles } }) => {
       if (sort_by && topic) {
         const filteredByTopic = articles.filter(
           (article) => article.topic === topic
         );
-        const formattedArticles = filteredByTopic.map((article) => {
-          const formattedArticle = formatDate(article.created_at);
-          const date = formattedArticle.split(" ")[2];
-          const yearAndMonth = date.split("/");
-          article.created_at = [yearAndMonth[0], yearAndMonth[2]];
-          return article;
-        });
-        return formattedArticles;
+        return filteredByTopic;
       } else {
-        const formattedArticles = articles.map((article) => {
-          const formattedArticle = formatDate(article.created_at);
-          const date = formattedArticle.split(" ")[2];
-          const yearAndMonth = date.split("/");
-          article.created_at = [yearAndMonth[0], yearAndMonth[2]];
-          return article;
-        });
-        return formattedArticles;
+        return articles;
       }
     });
 };
@@ -53,12 +39,7 @@ export const getCommentsById = (id) => {
   return axiosInstance
     .get(`/articles/${id}/comments`)
     .then(({ data: { comments } }) => {
-      const formattedComments = comments.map((comment) => {
-        const formattedDate = formatDate(comment.created_at);
-        comment.created_at = formattedDate;
-        return comment;
-      });
-      return formattedComments;
+      return comments;
     });
 };
 
@@ -78,8 +59,6 @@ export const addComment = (id, author, comment) => {
       article_id: id,
     })
     .then(({ data: { postedComment } }) => {
-      const formattedDate = formatDate(postedComment.created_at);
-      postedComment.created_at = formattedDate;
       return postedComment;
     });
 };

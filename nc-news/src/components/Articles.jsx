@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as api from "../utilis/api";
+import * as api from "../util/api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
 import { Link } from "@reach/router";
@@ -61,27 +61,26 @@ class Articles extends Component {
               value="comment_count"
               className="sortButton"
             >
-              Comments
+              Most comments
             </button>
             <button
               onClick={this.handleSortBy}
               value="votes"
               className="sortButton"
             >
-              Votes
+              Most Votes
             </button>
             <button
               className="sortButton"
               value="created_at"
               onClick={this.handleSortBy}
             >
-              Posted
+              Date Posted
             </button>
           </label>
         </header>
         <ul className="articleDiv">
           {articles.map((article, index) => {
-            console.log(article);
             return (
               <li key={article.article_id}>
                 <ArticleCard article={article} index={index} />

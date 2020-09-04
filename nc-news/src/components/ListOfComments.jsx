@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Loader from "./Loader";
-import * as api from "../utilis/api";
+import * as api from "../util/api";
 import Voter from "./Voter";
 import AddComment from "./AddComment";
+import moment from "moment";
 
 class ListOfComments extends Component {
   state = {
@@ -19,7 +20,6 @@ class ListOfComments extends Component {
   }
 
   handleNewComment = (newComment) => {
-    console.log(newComment);
     this.setState((currentState) => {
       return { comments: [newComment, ...currentState.comments] };
     });
@@ -76,7 +76,7 @@ class ListOfComments extends Component {
                 </p>
                 <br />
                 <p>
-                  <b>Posted at:</b> {comment.created_at}
+                  <b>Posted at:</b> {moment(comment.created_at).fromNow()}
                 </p>
                 <br />
                 <Voter

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-import * as api from "../utilis/api";
+import * as api from "../util/api";
 import ListOfComments from "./ListOfComments";
 import SearchBar from "./SearchBar";
 import Voter from "./Voter";

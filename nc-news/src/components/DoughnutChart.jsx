@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Doughnut } from "react-chartjs-2";
-import * as api from "../utilis/api";
+import * as api from "../util/api";
 
 class DoughnutChart extends Component {
   state = {

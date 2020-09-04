@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as api from "../utilis/api";
+import * as api from "../util/api";
 class Voter extends Component {
   state = {
     currentVote: this.props.votes,
@@ -18,7 +18,7 @@ class Voter extends Component {
     } else {
       vote = -1;
     }
-    console.log(addedvote);
+
     api.addVotes(type, id, vote);
     this.setState({
       addedvote: 0,

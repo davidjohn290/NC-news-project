@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as api from "../utilis/api";
+import * as api from "../util/api";
 
 class AddComment extends Component {
   state = {
@@ -14,6 +14,7 @@ class AddComment extends Component {
     api.addComment(id, user, comment).then((newComment) => {
       handleNewComment(newComment);
     });
+    this.setState({ comment: "" });
   };
 
   handleInput = ({ target: { value, name } }) => {

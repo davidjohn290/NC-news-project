@@ -103,8 +103,7 @@ class SingleArticle extends Component {
             </p>
             <br />
             <p>
-              <b>Posted:</b>{" "}
-              {moment([created_at[1], 0, created_at[0]]).fromNow()}
+              <b>Posted:</b> {moment(created_at).fromNow()}
             </p>
             <br />
             <Voter votes={votes} type={"articles"} id={article_id} />

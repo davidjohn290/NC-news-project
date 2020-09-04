@@ -1,5 +1,5 @@
 import axios from "axios";
-const formatDate = require("./utilFunction");
+
 const axiosInstance = axios.create({
   baseURL: "https://getting-nc-news.herokuapp.com/api",
 });
@@ -14,23 +14,12 @@ export const getAllArticles = (topic, sort_by) => {
   return axiosInstance
     .get("/articles", { params: { sort_by, topic } })
     .then(({ data: { articles } }) => {
-      if (sort_by && topic) {
-        const filteredByTopic = articles.filter(
-          (article) => article.topic === topic
-        );
-        return filteredByTopic;
-      } else {
-        return articles;
-      }
+      return articles;
     });
 };
 
 export const getSingleArticle = (id) => {
   return axiosInstance.get(`/articles/${id}`).then(({ data: { article } }) => {
-    const formattedArticle = formatDate(article.created_at);
-    const date = formattedArticle.split(" ")[2];
-    const yearAndMonth = date.split("/");
-    article.created_at = [yearAndMonth[0], yearAndMonth[2]];
     return article;
   });
 };
